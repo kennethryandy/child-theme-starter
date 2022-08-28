@@ -1,0 +1,9 @@
+{
+  "name": "generatepress-child-theme",
+  "version": "1.0.0",
+  "description": "A simple generate press wordpress child theme.",
+	"author": "Kenneth Ryan Dy",
+  "dependencies": {
+    "reflex-grid": "^2.0.7"
+  }
+}
