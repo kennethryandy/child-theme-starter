@@ -1,0 +1,139 @@
+// FONTS
+@font-face {
+	font-family: Sf-pro-display-cu;
+	src: url("../fonts/sf-pro/SFPRODISPLAYREGULAR.otf") format("opentype");
+}
+
+@font-face {
+	font-family: Sf-pro-display-cu;
+	font-weight: 600;
+	src: url("../fonts/sf-pro/SFPRODISPLAYMEDIUM.otf") format("opentype");
+}
+
+@font-face {
+	font-family: Sf-pro-display-cu;
+	font-weight: 800;
+	src: url("../fonts/sf-pro/SFPRODISPLAYBOLD.otf") format("opentype");
+}
+.red-line {
+	position: relative;
+	display: inline-block;
+
+	&::before {
+		content: "";
+		position: absolute;
+		background: url("../img/curve.svg");
+		background-repeat: no-repeat;
+		background-size: 100%;
+		background-position: center;
+		width: 100%;
+		height: 100%;
+		bottom: -55px;
+		left: 0;
+	}
+}
+
+.heading-1,
+h1 {
+	@extend %primary-font;
+	font-size: 64px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 72px;
+	letter-spacing: -0.02em;
+	margin-bottom: 0;
+}
+
+.heading-2,
+h2 {
+	@extend %primary-font;
+	font-size: 64px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 64px;
+	letter-spacing: -0.02em;
+	margin-bottom: 0;
+}
+
+.body-2,
+p {
+	font-family: "Poppins", sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0em;
+	a {
+		color: inherit;
+	}
+}
+
+.body-6 {
+	font-family: "Poppins", sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 24px;
+	letter-spacing: 0em;
+}
+
+@include media-breakpoint-down(lg) {
+	.heading-1,
+	h1 {
+		font-size: 48px;
+		line-height: 48px;
+	}
+	.heading-2,
+	h2 {
+		font-size: 48px;
+		line-height: 52px;
+	}
+
+	.body-2,
+	p {
+		font-size: 14px;
+		line-height: 16px;
+	}
+
+	.body-6 {
+		font-size: 12px;
+		line-height: 16px;
+	}
+	.red-line::before {
+		bottom: -42px;
+	}
+}
+
+.hidden-desktop {
+	display: none;
+}
+.hidden-mobile {
+	display: block;
+}
+
+@include media-breakpoint-down(md) {
+	.heading-1,
+	h1 {
+		font-size: 36px;
+		line-height: 40px;
+	}
+	.heading-2,
+	h2 {
+		font-size: 32px;
+		line-height: 40px;
+	}
+	.body-2,
+	p {
+		font-size: 12px;
+		line-height: 16px;
+	}
+	.red-line::before {
+		bottom: -32px;
+	}
+	.hidden-mobile {
+		display: none;
+	}
+	.hidden-desktop {
+		display: block;
+	}
+}

@@ -1,0 +1,338 @@
+
+
+input[type=checkbox] {
+	accent-color: #EC002D;
+	width: 18px;
+	height: 18px;
+}
+
+input[type=radio] {
+	accent-color: #EC002D;
+}
+
+.custom-input {
+	@extend %tertiary-font;
+	color: #23262F;
+
+	&__wrapper {
+		position: relative;
+	}
+
+	label {
+		display: block;
+		margin-bottom: 12px;
+		font-size: 12px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 16px;
+		letter-spacing: 1.2000000476837158px;
+		text-align: left;
+		text-transform: uppercase;
+	}
+
+	input[type=text],input[type=tel],input[type=email],input[type=number],input[type=tel],&__select, textarea {
+		padding: 15px 20px;
+		width: 100%;
+		background-color: rgba(35, 38, 47, 0.05);
+		color: #23262F;
+		border: 1px solid rgba(35, 38, 47, 0.05);
+		outline: none;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 18px;
+		letter-spacing: 0px;
+		font-family: inherit;
+
+		&:focus, &:focus-visible, &:focus-within, &.filled {
+			border-color:rgba(35, 38, 47, 0.07);
+			&+.placeholder-text, .custom-input__placeholder {
+				top: 0;
+				left: 10px;
+				font-size: 9px;
+			}
+		}
+	}
+
+	&__placeholder {
+		transition: all 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+		user-select: none;
+		font-family: inherit;
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 18px;
+		letter-spacing: 0px;
+		text-align: left;
+		position: absolute;
+		top: 16px;
+		left: 20px;
+		color: #23262F;
+		opacity: 0.5;
+		pointer-events: none;
+	}
+	.placeholder-text.active {
+		top: 0;
+		left: 10px;
+		font-size: 9px;
+	}
+
+	textarea {
+		min-height: 120px;
+		resize: none;
+	}
+
+	&__checkbox {
+		display: block;
+    position: relative;
+    padding-left: 32px;
+    cursor: pointer;
+		user-select: none;
+		font-family: inherit;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 21px;
+		letter-spacing: 0px;
+
+
+		input[type=checkbox] {
+			position: absolute;
+			clip: rect(0,0,0,0);
+			pointer-events: none;
+
+			&:checked {
+				+.check-mark {
+					background: #EC002D;
+					&::after {
+						content: "";
+						position: absolute;
+						width: 7px;
+						height: 12px;
+						border: solid #fff;
+						border-width: 0 3px 3px 0;
+						left: 50%;
+						top: 40%;
+						transform: translate(-50%, -50%) rotate(45deg);
+					}
+				}
+			}
+		}
+		&>.check-mark {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 20px;
+			width: 20px;
+			box-shadow: rgba(35, 38, 47,.2) 0px 0px 0px 1px;
+		}
+	}
+
+}
+
+.custom-select {
+	position: relative;
+	.custom-input__select {
+		display: none;
+	}
+	&__select {
+		min-width: 180px;
+		position: relative;
+		padding: 15px 20px;
+		width: 100%;
+		background-color: rgba(35, 38, 47, 0.05);
+		color: #23262f;
+		border: 1px solid rgba(35, 38, 47, 0.05);
+		outline: none;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 18px;
+		letter-spacing: 0px;
+		font-family: inherit;
+		cursor: pointer;
+		i {
+			font-size: 8px;
+			position: absolute;
+			right: 20px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		&>span {
+			@extend %tertiary-font;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 18px;
+			letter-spacing: 0px;
+			&.initial-val {
+				opacity: 0.5;
+			}
+		}
+	}
+	&__items {
+		position: absolute;
+		top: 100%;
+		width: 100%;
+		max-height: 440px;
+		display: block;
+		border: 1px solid #f0f0f0;
+		box-shadow: 0px 12px 30px rgba(193, 193, 193, 0.2);
+		padding-top: 14px;
+		padding-bottom: 14px;
+		z-index: 6;
+		background: #fff;
+		overflow-y: auto;
+		&::-webkit-scrollbar {
+			width: 14px;
+		}
+		&.hidden {
+			display: none;
+		}
+	}
+	&__item {
+		@extend %tertiary-font;
+		padding-left: 42px;
+		padding-right: 42px;
+		height: 48px;
+		display: flex;
+		align-items: center;
+		width: 100%;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 24px;
+		letter-spacing: 0em;
+		color: #000000;
+		cursor: pointer;
+
+		&:not(.selected):hover, &:not(.disable):hover {
+			background-color: rgba(35, 38, 47, 0.05);
+		}
+		&.selected {
+			background: $main-red;
+			color: #fff;
+			font-weight: 500;
+		}
+		&.disable {
+			opacity: 0.5;
+			cursor: default;
+			pointer-events: none;
+			user-select: none;
+		}
+	}
+}
+
+
+.custom-datepicker {
+	position: relative;
+	width: 100%;
+	@extend %tertiary-font;
+	
+	label {
+		color: #23262F;
+		display: block;
+		margin-bottom: 12px;
+		font-size: 12px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 16px;
+		letter-spacing: 1.2000000476837158px;
+		text-align: left;
+		text-transform: uppercase;
+	}
+	&__wrapper {
+		padding: 15px 20px;
+    width: 100%;
+    background-color: rgba(35,38,47,0.05);
+    color: #23262f;
+    border: 1px solid rgba(35,38,47,0.05);
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0px;
+    cursor: pointer;
+		&>i {
+			pointer-events: none;
+			float: right;
+			font-size: 16px;
+		}
+		&>.initial-val {
+			opacity: 0.5;
+		}
+	}
+	
+
+	.qs-datepicker-container {
+		width: 100%;
+		max-width: 400px;
+		padding: 20px;
+		border: 1px solid #f0f0f0;
+		box-shadow: 0px 12px 30px rgba(193, 193, 193, 0.2);
+	}
+	.qs-controls {
+		background: rgba(251, 26, 56, 0.05);
+		padding: 16px 18px;
+		.qs-arrow {
+			transform-origin: 50% 50%;
+			transform: rotate(45deg);
+			box-shadow: inset -0.2em 0.2em 0 0 #e74c3c;
+			border-radius: 0 0.15em 0 0;
+			height: 9px;
+			width: 9px;
+			&::after {
+				content: none
+			}
+			&.qs-left {
+				transform: rotate(224deg)
+			}
+		}
+	}
+	.qs-month-year {
+		@extend %tertiary-font;
+		font-size: 16px;
+		font-weight: 700;
+		line-height: 24px;
+		letter-spacing: 0em;
+	}
+	.qs-squares {
+		padding: 0;
+		.qs-square {
+			height: 50px;
+			max-width: 50px;
+			border-radius: 0;
+		}
+		.qs-day {
+			color: #777e90;
+			@extend %tertiary-font;
+			font-size: 14px;
+			font-weight: 700;
+			line-height: 24px;
+			letter-spacing: 0em;
+			text-transform: uppercase;
+		}
+		.qs-num {
+			color: #000000;
+			@extend %tertiary-font;
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 24px;
+			letter-spacing: 0em;
+			text-align: center;
+			&.qs-disabled {
+				color: #777e90;
+				opacity: 1;
+			}
+		}
+		.qs-active {
+			background: $main-red;
+			color: #fff;
+		}
+		.qs-square:not(.qs-empty):not(.qs-disabled):not(.qs-day):not(.qs-active) {
+			&:hover {
+				background: rgba(251, 26, 56, 0.05);
+			}
+		}
+	}
+
+
+
+}
